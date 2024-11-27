@@ -42,7 +42,7 @@ def main():
     
     # Display the plot
     plt.tight_layout()
-    #plt.show()
+    plt.show()
 
     print(json.dumps(data, indent=2))  # Pretty print the data structure
 
