@@ -40,8 +40,8 @@ def main():
                         subplot_titles=('Account Value Over Time', 
                                         'Deposits and Withdrawals Over Time', 
                                         'Net Account Value Over Time', 
-                                        'Realized Gains as % of 4000 PLN',
-                                        'Unrealized Gains as % of 4000 PLN'))
+                                        'Realized Gains as % of 8000 PLN',
+                                        'Unrealized Gains as % of 8000 PLN'))
 
     # Account Value
     fig.add_trace(
