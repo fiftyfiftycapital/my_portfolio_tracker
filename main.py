@@ -6,7 +6,7 @@ from datetime import datetime
 import json
 
 def main():
-    file_path = 'data/brokerage_data.csv'
+    file_path = 'data/brokerage_data1.csv'
     data = load_data(file_path)
     
     if not data:
@@ -29,7 +29,7 @@ def main():
         net_account_values.append(value - cumulative_adjustment)
 
     # Calculate realized and unrealized gains as percentages of 4000 PLN
-    initial_investment = 4000  # PLN
+    initial_investment = 8000  # PLN
     realized_gains_percent = [(pl / initial_investment) * 100 for pl in realized_pl]
     unrealized_gains_percent = [(pl / initial_investment) * 100 for pl in unrealized_pl]
 
@@ -159,7 +159,7 @@ def main():
 
     # Show the plot
     fig.show()
-    fig.write_html("your_figure_name.html")
+    fig.write_html("plot8000.html")
 
     # Pretty print the data structure
     #print(json.dumps(data, indent=2))
