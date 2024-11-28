@@ -159,9 +159,10 @@ def main():
 
     # Show the plot
     fig.show()
+    fig.write_html("your_figure_name.html")
 
     # Pretty print the data structure
-    print(json.dumps(data, indent=2))
+    #print(json.dumps(data, indent=2))
 
 if __name__ == "__main__":
     main()
