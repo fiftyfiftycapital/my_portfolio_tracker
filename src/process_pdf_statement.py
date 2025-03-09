@@ -4,6 +4,18 @@ import os
 from datetime import datetime
 from process_data import parse_data, preformat
 
+# Define expected CSV headers
+EXPECTED_HEADERS = [
+    'Date', 
+    'Account_Value',
+    'Deposit',
+    'Withdrawal',
+    'Realized_P/L',
+    'Unrealized_P/L',
+    'Overnight_Fee',
+    'Dividends'
+]
+
 def process_pdf_statement(pdf_path, csv_path):
     """Process PDF statement and append data to CSV file"""
     
@@ -21,22 +33,18 @@ def process_pdf_statement(pdf_path, csv_path):
         print(f"No data could be parsed from {pdf_path}")
         return
     
-    # Check if CSV exists and get headers
+    # Check if CSV exists
     csv_exists = os.path.exists(csv_path)
-    if csv_exists:
-        with open(csv_path, 'r') as f:
-            reader = csv.DictReader(f)
-            headers = reader.fieldnames
-    else:
-        headers = parsed_data[0].keys()
     
     # Append data to CSV
     with open(csv_path, 'a', newline='') as f:
-        writer = csv.DictWriter(f, fieldnames=headers)
+        writer = csv.DictWriter(f, fieldnames=EXPECTED_HEADERS)
         if not csv_exists:
             writer.writeheader()
         for entry in parsed_data:
-            writer.writerow(entry)
+            # Ensure all required fields are present
+            row_data = {header: entry.get(header, '') for header in EXPECTED_HEADERS}
+            writer.writerow(row_data)
     
     print(f"Successfully processed {pdf_path} and appended data to {csv_path}")
 
