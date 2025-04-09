@@ -55,7 +55,7 @@ def append_data_to_csv(file_path, data):
 
 def main():
     #pdf_path = 'data/ActivityStatement5805600-2025-03-06.pdf'
-    pdf_path = 'data/ActivityStatement5805600-2025-03-07.pdf'
+    pdf_path = 'temp/ActivityStatement5805600-2025-04-08.pdf'
     csv_path = 'data/brokerage_data1.csv'
     
     text = extract_text_from_pdf(pdf_path)
