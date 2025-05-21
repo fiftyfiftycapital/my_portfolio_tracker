@@ -3,6 +3,8 @@ from plotly.subplots import make_subplots
 import numpy as np
 from src.process_data import load_data
 from datetime import datetime
+import src.mail_downloader as mail_downloader
+import src.process_pdf_statement as process_pdf_statement
 import json
 
 def main():
@@ -200,4 +202,13 @@ def main():
     fig.write_html("plot8000.html")
 
 if __name__ == "__main__":
+    mail_downloader.main()
+    while True:
+        try:
+            result = process_pdf_statement.main()
+            if result != 0:  # Exit on non-success (None, non-zero, or error)
+                break
+        except Exception as e:
+            print(f"Error in process_data.main: {e}")
+            break  # Exit on exception
     main()
