@@ -8,7 +8,7 @@ import src.process_pdf_statement as process_pdf_statement
 import json
 
 def main():
-    file_path = 'data/brokerage_data1.csv'
+    file_path = 'data/brokerage_data2.csv'
     data = load_data(file_path)
     
     if not data:
@@ -31,8 +31,8 @@ def main():
         cumulative_adjustment += deposit - abs(withdrawal)
         net_account_values.append(value - cumulative_adjustment)
 
-    # Calculate realized and unrealized gains as percentages of 8000 PLN
-    initial_investment = 8000  # PLN
+    # Calculate realized and unrealized gains as percentages of 16000 PLN
+    initial_investment = 16000  # PLN
     realized_gains_percent = [(pl / initial_investment) * 100 for pl in realized_pl]
     unrealized_gains_percent = [(pl / initial_investment) * 100 for pl in unrealized_pl]
 
@@ -47,8 +47,8 @@ def main():
                         subplot_titles=('Account Value Over Time', 
                                         'Deposits and Withdrawals Over Time', 
                                         'Net Account Value Over Time', 
-                                        'Realized Gains as % of 8000 PLN',
-                                        'Unrealized Gains as % of 8000 PLN',
+                                        'Realized Gains as % of 16000 PLN',
+                                        'Unrealized Gains as % of 16000 PLN',
                                         'Overnight Fees Over Time',
                                         'Position Size Over Time'))  # Added new subplot title
 
@@ -121,7 +121,7 @@ def main():
         row=3, col=1
     )
 
-    # Realized Gains as % of 8000 PLN
+    # Realized Gains as % of 16000 PLN
     fig.add_trace(
         go.Bar(
             x=dates, 
@@ -134,7 +134,7 @@ def main():
         row=4, col=1
     )
 
-    # Unrealized Gains as % of 8000 PLN
+    # Unrealized Gains as % of 16000 PLN
     fig.add_trace(
         go.Bar(
             x=dates, 
@@ -199,7 +199,7 @@ def main():
 
     # Show the plot
     fig.show()
-    fig.write_html("plot8000.html")
+    fig.write_html("plot16000.html")
 
 if __name__ == "__main__":
     mail_downloader.main()

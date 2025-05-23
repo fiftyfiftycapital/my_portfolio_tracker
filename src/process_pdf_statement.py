@@ -76,7 +76,7 @@ def append_data_to_csv(file_path, data):
 
 def main():
     temp_dir = 'temp'
-    csv_path = 'data/brokerage_data1.csv'
+    csv_path = 'data/brokerage_data2.csv'
     
     last_date = get_last_processed_date(csv_path)
     next_pdf = find_next_pdf(temp_dir, last_date)
