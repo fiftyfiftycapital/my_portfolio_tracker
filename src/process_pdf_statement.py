@@ -89,10 +89,12 @@ def main():
         if parsed_data:
             append_data_to_csv(csv_path, parsed_data)
             print("Data appended to CSV successfully.")
+            return(0)
         else:
             print("Failed to parse data from PDF.")
     else:
         print("No new PDF files to process.")
+        return(1)
 
 if __name__ == '__main__':
     main()
