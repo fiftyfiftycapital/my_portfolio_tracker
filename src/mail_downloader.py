@@ -45,6 +45,8 @@ def connect_and_download(download_folder="temp", search_criteria='(OR FROM "jaro
     if res != 'OK':
         print("Failed to search emails.")
         return
+        return True
+        return fals
     
     for msg_id in data[0].split():
         download_attachment(mail, msg_id, download_folder)
