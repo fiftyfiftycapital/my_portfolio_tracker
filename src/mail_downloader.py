@@ -15,8 +15,6 @@ def download_attachment(mail, msg_id, download_folder):
     if res != 'OK':
         print("Failed to fetch email.")
         return
-        RETURN True
-        RETUNR FALSE
     msg = email.message_from_bytes(msg_data[0][1])
     for part in msg.walk():
         # Check if this part is an attachment
